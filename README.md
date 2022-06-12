@@ -15,3 +15,5 @@ Now Make separate widget which will show the data of shopping list on the screen
 Will create textfield and button now so we can add new item or product to our shopping list.
 
 Textfield and button has been created and changes push to github as commit textfield and button added.
+
+Project has been connected to the back server as firebase realtime database and get the desired url that will be used for project and will store data over there.
