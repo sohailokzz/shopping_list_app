@@ -25,3 +25,7 @@ Realtime Database is created with region asia-southeast as I belong to asia. Get
 Now we will start adding functions first we will add the function that will load all the data from the database.
 
 Load shopping list function has been added which will load all the shoping list from the data base.
+
+Add item function has been added through which we will add new item to the shoping list.
+
+On pressing the button CircularProgressIndicator which will be shown on the place of button when send to the server, both textfield will be clear and keyboard will also be off with unfocus function that is added to aslo.

@@ -18,6 +18,8 @@ class _ShoppingListState extends State<ShoppingList> {
   final productNameController = TextEditingController();
   final productQuantityController = TextEditingController();
   List<ProductModel> allProducts = [];
+  bool isLoading = false;
+  var currentFocus;
 
   @override
   void initState() {
@@ -41,8 +43,45 @@ class _ShoppingListState extends State<ShoppingList> {
         );
       });
       allProducts = loadedProducts;
-
       setState(() {});
+    }
+  }
+
+  addItem() async {
+    setState(() {
+      isLoading = true;
+    });
+    Uri myUri = Uri.parse(myUrl);
+    await http.post(
+      myUri,
+      headers: headers,
+      body: json.encode(
+        {
+          'productName': productNameController.text,
+          'productQuantity': productQuantityController.text,
+        },
+      ),
+    );
+    setState(() {
+      isLoading = false;
+    });
+    setState(
+      () {
+        allProducts.add(
+          ProductModel(
+            productName: productNameController.text,
+            productQuantity: productQuantityController.text,
+          ),
+        );
+      },
+    );
+  }
+
+  unfocus() {
+    currentFocus = FocusScope.of(context);
+
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
     }
   }
 
@@ -61,7 +100,7 @@ class _ShoppingListState extends State<ShoppingList> {
       ),
       body: allProducts.isEmpty
           ? const Center(
-              child: Text('No items available for shopping'),
+              child: CircularProgressIndicator(),
             )
           : ListView(
               children: [
@@ -83,12 +122,19 @@ class _ShoppingListState extends State<ShoppingList> {
                       const SizedBox(
                         height: 12,
                       ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'Add Item',
-                        ),
-                      ),
+                      isLoading
+                          ? const CircularProgressIndicator()
+                          : ElevatedButton(
+                              onPressed: () {
+                                addItem();
+                                productNameController.clear();
+                                productQuantityController.clear();
+                                unfocus();
+                              },
+                              child: const Text(
+                                'Add Item',
+                              ),
+                            ),
                     ],
                   ),
                 ),
@@ -124,7 +170,11 @@ class _ShoppingListState extends State<ShoppingList> {
               ),
             ),
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  allProducts.removeAt(index);
+                });
+              },
               icon: const Icon(
                 Icons.delete,
                 color: Colors.black,
