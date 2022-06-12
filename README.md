@@ -17,3 +17,11 @@ Will create textfield and button now so we can add new item or product to our sh
 Textfield and button has been created and changes push to github as commit textfield and button added.
 
 Project has been connected to the back server as firebase realtime database and get the desired url that will be used for project and will store data over there.
+
+Project is connected through flutterfire cli which automatically generate the require documment that we doing before manually.
+
+Realtime Database is created with region asia-southeast as I belong to asia. Get the desire url and set that in seprate file as api and than api constant.
+
+Now we will start adding functions first we will add the function that will load all the data from the database.
+
+Load shopping list function has been added which will load all the shoping list from the data base.

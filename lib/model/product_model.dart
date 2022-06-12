@@ -1,9 +1,9 @@
 class ProductModel {
   final String productName;
-  final String prductQuantity;
+  final String productQuantity;
 
   ProductModel({
     required this.productName,
-    required this.prductQuantity,
+    required this.productQuantity,
   });
 }
