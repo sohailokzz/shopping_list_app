@@ -29,3 +29,7 @@ Load shopping list function has been added which will load all the shoping list 
 Add item function has been added through which we will add new item to the shoping list.
 
 On pressing the button CircularProgressIndicator which will be shown on the place of button when send to the server, both textfield will be clear and keyboard will also be off with unfocus function that is added to aslo.
+
+Working for the delete function but got stuck and confussed with the auto generated key and unable to get that due to which I was also unable to add delete function.
+
+Splash Screen has been created in figma for the shoping list app and all the screen that are required has been added to project for the android.

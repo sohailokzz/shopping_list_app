@@ -98,49 +98,49 @@ class _ShoppingListState extends State<ShoppingList> {
         ),
         centerTitle: true,
       ),
-      body: allProducts.isEmpty
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : ListView(
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Column(
-                    children: [
-                      MyTextField(
-                        labelText: 'Product Name',
-                        textEditingController: productNameController,
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      MyTextField(
-                        labelText: 'Product Quantity',
-                        textEditingController: productQuantityController,
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      isLoading
-                          ? const CircularProgressIndicator()
-                          : ElevatedButton(
-                              onPressed: () {
-                                addItem();
-                                productNameController.clear();
-                                productQuantityController.clear();
-                                unfocus();
-                              },
-                              child: const Text(
-                                'Add Item',
-                              ),
-                            ),
-                    ],
-                  ),
+                MyTextField(
+                  labelText: 'Product Name',
+                  textEditingController: productNameController,
                 ),
-                showShopingList(),
+                const SizedBox(
+                  height: 12,
+                ),
+                MyTextField(
+                  labelText: 'Product Quantity',
+                  textEditingController: productQuantityController,
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                isLoading
+                    ? const CircularProgressIndicator()
+                    : ElevatedButton(
+                        onPressed: () {
+                          addItem();
+                          productNameController.clear();
+                          productQuantityController.clear();
+                          unfocus();
+                        },
+                        child: const Text(
+                          'Add Item',
+                        ),
+                      ),
               ],
             ),
+          ),
+          allProducts.isEmpty
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : showShopingList(),
+        ],
+      ),
     );
   }
 
