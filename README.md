@@ -33,3 +33,5 @@ On pressing the button CircularProgressIndicator which will be shown on the plac
 Working for the delete function but got stuck and confussed with the auto generated key and unable to get that due to which I was also unable to add delete function.
 
 Splash Screen has been created in figma for the shoping list app and all the screen that are required has been added to project for the android.
+
+Custom App icon has been added and also the name of the app has been change to the custom name as shopping list.
